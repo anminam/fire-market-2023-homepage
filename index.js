@@ -1,4 +1,4 @@
-import jsonContent from './assets/index.json' assert { type: 'json' };
+import jsonContent from "./assets/index.json" assert { type: "json" };
 // import loadingModule from './progress.js';
 
 const currentModule = (initEl) => {
@@ -8,10 +8,10 @@ const currentModule = (initEl) => {
       _item = el;
     },
     activate: () => {
-      _item.classList.add('visible');
+      _item.classList.add("visible");
     },
     inActivate: () => {
-      _item.classList.remove('visible');
+      _item.classList.remove("visible");
     },
   };
 };
@@ -21,7 +21,7 @@ const commonModule = () => {
 
   function initImageDisable() {
     setTimeout(() => {
-      document.querySelector('.scroll-graphic').classList.remove('none');
+      document.querySelector(".scroll-graphic").classList.remove("none");
     }, 1000);
   }
 
@@ -33,7 +33,7 @@ const commonModule = () => {
   }
 
   function getTextItems(list, attr) {
-    return list.map((item) => getTextItem(item.msg)).join('');
+    return list.map((item) => getTextItem(item.msg)).join("");
   }
 
   function getTextItem(msg) {
@@ -41,7 +41,7 @@ const commonModule = () => {
   }
 
   function getImageItems(list) {
-    return list.map((item) => getImageItem(item.img)).join('');
+    return list.map((item) => getImageItem(item.img)).join("");
   }
 
   function getImageItem(path) {
@@ -57,7 +57,7 @@ const commonModule = () => {
   }
 
   function updateYoutubeSize() {
-    const els = document.querySelectorAll('.youtube');
+    const els = document.querySelectorAll(".youtube");
     const rect = els[0].getBoundingClientRect();
     for (const el of els) {
       el.style.height = `${rect.width * 0.56}px`;
@@ -90,7 +90,7 @@ const commonModule = () => {
   }
 
   function initLoadingModule() {
-    loadingModule({ id: 'spinner' });
+    loadingModule({ id: "spinner" });
   }
 
   return {
@@ -102,14 +102,14 @@ const commonModule = () => {
       // );
       initImageDisable();
       updateYoutubeSize();
-      document.querySelector('.container-texts').innerHTML = getTextItems(
+      document.querySelector(".container-texts").innerHTML = getTextItems(
         jsonContent.list
       );
-      document.querySelector('.container-images').innerHTML = getImageItems(
+      document.querySelector(".container-images").innerHTML = getImageItems(
         jsonContent.list
       );
-      const elSteps = document.querySelectorAll('.step');
-      const imgItems = document.querySelectorAll('.img-item');
+      const elSteps = document.querySelectorAll(".step");
+      const imgItems = document.querySelectorAll(".img-item");
       _currentItem = currentModule(imgItems[0]);
       // _currentItem.activate();
       let ioIndex;
@@ -123,8 +123,8 @@ const commonModule = () => {
         elSteps[i].dataset.index = i;
         imgItems[i].dataset.index = i;
       }
-      window.addEventListener('resize', handlerSizeChanged);
-      window.addEventListener('scroll', () => {
+      window.addEventListener("resize", handlerSizeChanged);
+      window.addEventListener("scroll", () => {
         for (let i = ioIndex - 1; i < ioIndex + 2; i++) {
           const tSTep = elSteps[i];
           if (!tSTep) continue;
